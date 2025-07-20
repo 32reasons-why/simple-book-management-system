@@ -41,10 +41,50 @@ namespace BookManagementSystem.Services
 
         public void LoadBooks()
         {
-            if (File.Exists(dataFilePath))
+            try
             {
-                string json = File.ReadAllText(dataFilePath);
-                books = JsonSerializer.Deserialize<List<Book>>(json) ?? new List<Book>();
+                if (File.Exists(dataFilePath))
+                {
+                    string json = File.ReadAllText(dataFilePath);
+                    books = JsonSerializer.Deserialize<List<Book>>(json) ?? new List<Book>();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️ Failed to load books: {ex.Message}");
+                books = new List<Book>();
+            }
+        }
+
+        public void RemoveBook(int bookID)
+        {
+            var bookToRemove = books.FirstOrDefault(b => b.BookID == bookID);
+            if (bookToRemove != null)
+            {
+                books.Remove(bookToRemove);
+                Console.WriteLine("✅ Book removed successfully.");
+            }
+            else
+            {
+                Console.WriteLine("❌ Book not found.");
+            }
+        }
+
+        public void UpdateBook(int bookID, Book updatedBook)
+        {
+            var existingBook = books.FirstOrDefault(b => b.BookID == bookID);
+            if (existingBook != null)
+            {
+                existingBook.Title = updatedBook.Title;
+                existingBook.Author = updatedBook.Author;
+                existingBook.PublicationYear = updatedBook.PublicationYear;
+                existingBook.IsAvailable = updatedBook.IsAvailable;
+
+                Console.WriteLine("✅ Book updated successfully.");
+            }
+            else
+            {
+                Console.WriteLine("❌ Book not found.");
             }
         }
 

@@ -1,16 +1,23 @@
 [
   {
     "BookID": 1,
-    "Title": "Clean Code",
-    "Author": "Robert C. Martin",
-    "PublicationYear": 2008,
-    "IsAvailable": true
+    "Title": "nna",
+    "Author": "nna",
+    "PublicationYear": 44,
+    "IsAvailable": false
   },
   {
     "BookID": 23,
     "Title": "ed",
     "Author": "de",
     "PublicationYear": 2323,
+    "IsAvailable": true
+  },
+  {
+    "BookID": 34,
+    "Title": "y",
+    "Author": "y",
+    "PublicationYear": 7,
     "IsAvailable": true
   }
 ]

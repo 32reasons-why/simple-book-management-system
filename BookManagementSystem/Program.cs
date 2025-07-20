@@ -16,7 +16,9 @@ namespace BookManagementSystem
                 Console.WriteLine("\nLibrary Menu");
                 Console.WriteLine("1. Add Book");
                 Console.WriteLine("2. List Available Books");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("3. Remove Book");
+                Console.WriteLine("4. Update Book");
+                Console.WriteLine("5. Exit");
                 Console.Write("Enter option: ");
                 var input = Console.ReadLine();
 
@@ -47,8 +49,57 @@ namespace BookManagementSystem
                         break;
 
                     case "3":
+                        Console.Write("Enter Book ID to remove: ");
+                        if (int.TryParse(Console.ReadLine(), out int removeId))
+                        {
+                            library.RemoveBook(removeId);
+                        }
+                        else
+                        {
+                            Console.WriteLine("❌ Invalid ID.");
+                        }
+                        break;
+
+                    case "4":
+                        Console.Write("Enter Book ID to update: ");
+                        if (int.TryParse(Console.ReadLine(), out int updateId))
+                        {
+                            var updatedBook = new Book();
+                            updatedBook.BookID = updateId; // Keep same ID
+
+                            Console.Write("Enter new Title: ");
+                            updatedBook.Title = Console.ReadLine() ?? string.Empty;
+
+                            Console.Write("Enter new Author: ");
+                            updatedBook.Author = Console.ReadLine() ?? string.Empty;
+
+                            Console.Write("Enter new Publication Year: ");
+                            if (!int.TryParse(Console.ReadLine(), out int pubYear))
+                            {
+                                Console.WriteLine("❌ Invalid year.");
+                                break;
+                            }
+                            updatedBook.PublicationYear = pubYear;
+
+                            Console.Write("Is the book available? (yes/no): ");
+                            string? availableInput = Console.ReadLine();
+                            updatedBook.IsAvailable = availableInput?.ToLower() == "yes";
+
+                            library.UpdateBook(updateId, updatedBook);
+                        }
+                        else
+                        {
+                            Console.WriteLine("❌ Invalid ID.");
+                        }
+                        break;
+
+                    case "5":
                         library.SaveBooks();  // Save before exit
                         running = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option. Try again.");
                         break;
                 }
             }
