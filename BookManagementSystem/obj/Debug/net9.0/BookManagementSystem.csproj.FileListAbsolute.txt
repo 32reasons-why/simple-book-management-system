@@ -1,0 +1,14 @@
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\bin\Debug\net9.0\BookManagementSystem.exe
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\bin\Debug\net9.0\BookManagementSystem.deps.json
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\bin\Debug\net9.0\BookManagementSystem.runtimeconfig.json
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\bin\Debug\net9.0\BookManagementSystem.dll
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\bin\Debug\net9.0\BookManagementSystem.pdb
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\BookManagementSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\BookManagementSystem.AssemblyInfoInputs.cache
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\BookManagementSystem.AssemblyInfo.cs
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\BookManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\BookManagementSystem.dll
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\refint\BookManagementSystem.dll
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\BookManagementSystem.pdb
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\BookManagementSystem.genruntimeconfig.cache
+C:\Users\chilw\source\repos\BookManagementSystem\BookManagementSystem\obj\Debug\net9.0\ref\BookManagementSystem.dll
