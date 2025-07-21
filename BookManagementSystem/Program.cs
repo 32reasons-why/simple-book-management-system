@@ -1,4 +1,5 @@
-﻿using BookManagementSystem.Models;
+﻿using BookManagementSystem.Helpers;
+using BookManagementSystem.Models;
 using BookManagementSystem.Services;
 using System;
 
@@ -67,8 +68,8 @@ namespace BookManagementSystem
                 {
                     return option;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine("\nInvalid input/option :(. Please enter a number between 1 and 6.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.InvalidMenuOption);
             }
         }
 
@@ -84,8 +85,8 @@ namespace BookManagementSystem
                     newBook.BookID = id;
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine("Invalid ID:(. Book ID must be an Integer.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.InvalidId);
             }
 
             while (true)
@@ -97,8 +98,8 @@ namespace BookManagementSystem
                     newBook.Title = title;
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine("Title cannot be empty :(.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.InvalidTitle);
             }
 
             while (true)
@@ -113,8 +114,8 @@ namespace BookManagementSystem
                     newBook.Author = author;
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine("Author's name must contain only letters and spaces, and be at least 3 letters long :(.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.InvalidAuthor);
             }
 
             int currentYear = DateTime.Now.Year;
@@ -127,8 +128,8 @@ namespace BookManagementSystem
                     newBook.PublicationYear = year;
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine($"Publication Year must be a 4-digit number between Year 1000 and {currentYear} :(.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.GetInvalidYearMessage(currentYear));
             }
 
             newBook.IsAvailable = true;
@@ -147,8 +148,8 @@ namespace BookManagementSystem
                 {
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine("Invalid ID. Please enter a valid integer :(.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.InvalidId);
             }
 
             library.RemoveBook(bookID);
@@ -165,8 +166,8 @@ namespace BookManagementSystem
                 {
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine("Invalid ID. Please enter a valid integer :(.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.InvalidId);
             }
 
             var updatedBook = new Book { BookID = updateId };
@@ -180,8 +181,8 @@ namespace BookManagementSystem
                     updatedBook.Title = title;
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine("Title cannot be empty :(.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.InvalidTitle);
             }
 
             while (true)
@@ -196,8 +197,8 @@ namespace BookManagementSystem
                     updatedBook.Author = author;
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine("Author name must contain only letters and spaces, and be at least 3 letters long :(.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.InvalidAuthor);
             }
 
             int currentYear = DateTime.Now.Year;
@@ -210,8 +211,8 @@ namespace BookManagementSystem
                     updatedBook.PublicationYear = pubYear;
                     break;
                 }
-                Console.WriteLine("=======================================================================================");
-                Console.WriteLine($"Publication Year must be a 4-digit number between 1000 and {currentYear} :(.");
+                Console.WriteLine(Constants.Divider);
+                Console.WriteLine(ErrorMessages.GetInvalidYearMessage(currentYear));
             }
 
             while (true)
@@ -230,8 +231,8 @@ namespace BookManagementSystem
                 }
                 else
                 {
-                    Console.WriteLine("=======================================================================================");
-                    Console.WriteLine("Please enter 'yes' or 'no' :(.");
+                    Console.WriteLine(Constants.Divider);
+                    Console.WriteLine(ErrorMessages.InvalidAvailability);
                 }
             }
 
@@ -254,7 +255,7 @@ namespace BookManagementSystem
             }
             else
             {
-                Console.WriteLine("No books found matching the keyword.");
+                Console.WriteLine(ErrorMessages.NoBooksFound);
             }
         }
 

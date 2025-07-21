@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
+using BookManagementSystem.Helpers;
 
 
 namespace BookManagementSystem.Services
@@ -13,7 +14,7 @@ namespace BookManagementSystem.Services
     public class Library
     {
         private List<Book> books = new();
-        private readonly string dataFilePath = "Data/BookStorage.json";
+        private readonly string dataFilePath = Constants.DataFilePath;
 
         public Library()
         {
@@ -34,7 +35,7 @@ namespace BookManagementSystem.Services
 
         public void SaveBooks()
         {
-            Directory.CreateDirectory("Data"); // Ensure folder exists
+            Directory.CreateDirectory(Constants.DataFolder);
             var json = JsonSerializer.Serialize(books, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(dataFilePath, json);
         }
