@@ -18,7 +18,8 @@ namespace BookManagementSystem
                 Console.WriteLine("2. List Available Books");
                 Console.WriteLine("3. Remove Book");
                 Console.WriteLine("4. Update Book");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5. Search for a Book");
+                Console.WriteLine("6. Exit");
                 Console.Write("Enter option: ");
                 var input = Console.ReadLine();
 
@@ -94,6 +95,26 @@ namespace BookManagementSystem
                         break;
 
                     case "5":
+                        Console.Write("Enter a keyword to search (ID, title, author, or year): ");
+                        string keyword = Console.ReadLine() ?? string.Empty;
+
+                        var results = library.SearchBooks(keyword);
+                        if (results.Any())
+                        {
+                            Console.WriteLine("\n📚 Matching Books:");
+                            foreach (var book in results)
+                            {
+                                Console.WriteLine($"ID: {book.BookID}, Title: {book.Title}, Author: {book.Author}, Year: {book.PublicationYear}, Available: {book.IsAvailable}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("🔍 No books found matching the keyword.");
+                        }
+                        break;
+
+
+                    case "6":
                         library.SaveBooks();  // Save before exit
                         running = false;
                         break;

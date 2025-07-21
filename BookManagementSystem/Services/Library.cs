@@ -10,7 +10,7 @@ using System.Text.Json;
 
 namespace BookManagementSystem.Services
 {
-    internal class Library
+    public class Library
     {
         private List<Book> books = new();
         private readonly string dataFilePath = "Data/BookStorage.json";
@@ -86,6 +86,23 @@ namespace BookManagementSystem.Services
             {
                 Console.WriteLine("❌ Book not found.");
             }
+        }
+
+        public List<Book> SearchBooks(string keyword)
+        {
+            return books
+                .Where(b =>
+                    b.Title.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+                    b.Author.Contains(keyword, StringComparison.OrdinalIgnoreCase) ||
+                    b.PublicationYear.ToString().Contains(keyword) ||
+                    b.BookID.ToString().Contains(keyword)
+                )
+                .ToList();
+        }
+
+        public Book? GetBook(int bookID)
+        {
+            return books.FirstOrDefault(b => b.BookID == bookID);
         }
 
         public List<Book> GetAvailableBooks() => books.Where(b => b.IsAvailable).ToList();
