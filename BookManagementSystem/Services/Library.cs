@@ -2,24 +2,33 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
 using BookManagementSystem.Helpers;
 
-
 namespace BookManagementSystem.Services
 {
+    /// <summary>
+    /// Manages the collection of books in the library, including CRUD operations and persistence.
+    /// </summary>
     public class Library
     {
         private List<Book> books = new();
+
+        /// <summary>
+        /// Path to the file used for Storing the Books (BookStorage.JSON).
+        /// </summary>
         private readonly string dataFilePath = Constants.DataFilePath;
 
         public Library()
         {
             LoadBooks();
         }
+
+        /// <summary>
+        /// Adds a new book to the library collection if the BookID does not already exist in Storage.
+        /// </summary>
+        /// <param name="book">The book to add.</param>
         public void AddBook(Book book)
         {
             if (!books.Any(b => b.BookID == book.BookID))
@@ -33,6 +42,9 @@ namespace BookManagementSystem.Services
             }
         }
 
+        /// <summary>
+        /// Saves the current list of books into BookStorage.JSON.
+        /// </summary>
         public void SaveBooks()
         {
             Directory.CreateDirectory(Constants.DataFolder);
@@ -40,6 +52,9 @@ namespace BookManagementSystem.Services
             File.WriteAllText(dataFilePath, json);
         }
 
+        /// <summary>
+        /// Loads books from BookStorage.JSON into the library collection.
+        /// </summary>
         public void LoadBooks()
         {
             try
@@ -57,6 +72,10 @@ namespace BookManagementSystem.Services
             }
         }
 
+        /// <summary>
+        /// Removes a book from the collection based on the provided BookID.
+        /// </summary>
+        /// <param name="bookID">The ID of the book to remove.</param>
         public void RemoveBook(int bookID)
         {
             var bookToRemove = books.FirstOrDefault(b => b.BookID == bookID);
@@ -71,6 +90,11 @@ namespace BookManagementSystem.Services
             }
         }
 
+        /// <summary>
+        /// Updates the details of a book identified by its BookID.
+        /// </summary>
+        /// <param name="bookID">The ID of the book to update.</param>
+        /// <param name="updatedBook">A book object containing the updated details.</param>
         public void UpdateBook(int bookID, Book updatedBook)
         {
             var existingBook = books.FirstOrDefault(b => b.BookID == bookID);
@@ -89,6 +113,11 @@ namespace BookManagementSystem.Services
             }
         }
 
+        /// <summary>
+        /// Searches for books containing the given keyword in their title, author, ID, or publication year.
+        /// </summary>
+        /// <param name="keyword">The keyword to search for.</param>
+        /// <returns>A list of matching books.</returns>
         public List<Book> SearchBooks(string keyword)
         {
             return books
@@ -101,11 +130,20 @@ namespace BookManagementSystem.Services
                 .ToList();
         }
 
+        /// <summary>
+        /// Retrieves a book by its BookID.
+        /// </summary>
+        /// <param name="bookID">The ID of the book to retrieve.</param>
+        /// <returns>The matching book, or null if not found.</returns>
         public Book? GetBook(int bookID)
         {
             return books.FirstOrDefault(b => b.BookID == bookID);
         }
 
+        /// <summary>
+        /// Gets a list of books that are currently available.
+        /// </summary>
+        /// <returns>A list of available books.</returns>
         public List<Book> GetAvailableBooks() => books.Where(b => b.IsAvailable).ToList();
     }
 }

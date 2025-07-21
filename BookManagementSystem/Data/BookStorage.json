@@ -26,5 +26,12 @@
     "Author": "Elaine",
     "PublicationYear": 1992,
     "IsAvailable": true
+  },
+  {
+    "BookID": 203444,
+    "Title": "Unavail",
+    "Author": "Check",
+    "PublicationYear": 2023,
+    "IsAvailable": false
   }
 ]

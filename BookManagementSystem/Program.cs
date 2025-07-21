@@ -47,6 +47,11 @@ namespace BookManagementSystem
                 }
             }
         }
+
+        /// <summary>
+        /// Displays the main menu and prompts user to select a valid option.
+        /// </summary>
+        /// <returns>The selected menu option as an integer.</returns>
         static int GetMenuOption()
         {
             int option;
@@ -73,6 +78,9 @@ namespace BookManagementSystem
             }
         }
 
+        /// <summary>
+        /// Handles the process of collecting book details from the user and adding a new book.
+        /// </summary>
         static Book addABookProcess(Library library)
         {
             Book newBook = new();
@@ -138,6 +146,9 @@ namespace BookManagementSystem
             return newBook;
         }
 
+        /// <summary>
+        /// Prompts the user to enter a book ID and removes the corresponding book.
+        /// </summary>
         static void removeABookProcess(Library library)
         {
             int bookID;
@@ -155,6 +166,9 @@ namespace BookManagementSystem
             library.RemoveBook(bookID);
         }
 
+        /// <summary>
+        /// Collects updated book details from the user and updates the specified book.
+        /// </summary>
         static void updateABookProcess(Library library)
         {
             int updateId;
@@ -239,6 +253,9 @@ namespace BookManagementSystem
             library.UpdateBook(updateId, updatedBook);
         }
 
+        /// <summary>
+        /// Prompts the user for a keyword and displays matching books.
+        /// </summary>
         static void searchForABookProcess(Library library)
         {
             Console.Write("Enter a Key/keyword to search (ID, title, author, or year): ");
@@ -259,6 +276,9 @@ namespace BookManagementSystem
             }
         }
 
+        /// <summary>
+        /// Displays a list of all books that are currently marked as available.
+        /// </summary>
         static void listAvailableBooksProcess(Library library)
         {
             var availableBooks = library.GetAvailableBooks();
