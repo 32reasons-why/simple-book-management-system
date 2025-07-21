@@ -51,7 +51,7 @@ namespace BookManagementSystem.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"⚠️ Failed to load books: {ex.Message}");
+                Console.WriteLine($"Failed to load books: {ex.Message}");
                 books = new List<Book>();
             }
         }
@@ -62,11 +62,11 @@ namespace BookManagementSystem.Services
             if (bookToRemove != null)
             {
                 books.Remove(bookToRemove);
-                Console.WriteLine("✅ Book removed successfully.");
+                Console.WriteLine("Book removed successfully.");
             }
             else
             {
-                Console.WriteLine("❌ Book not found.");
+                Console.WriteLine("Book not found.");
             }
         }
 
@@ -80,11 +80,11 @@ namespace BookManagementSystem.Services
                 existingBook.PublicationYear = updatedBook.PublicationYear;
                 existingBook.IsAvailable = updatedBook.IsAvailable;
 
-                Console.WriteLine("✅ Book updated successfully.");
+                Console.WriteLine("Book updated successfully.");
             }
             else
             {
-                Console.WriteLine("❌ Book not found.");
+                Console.WriteLine("Book not found.");
             }
         }
 
